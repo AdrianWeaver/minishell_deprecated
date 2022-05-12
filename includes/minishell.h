@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:31 by aweaver           #+#    #+#             */
-/*   Updated: 2022/04/15 17:23:22 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/12 10:04:01 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,17 @@ t_mlc	*ft_lastmlc(t_mlc *mlc);
 void	ft_addmlc_back(t_mlc **mlcl, t_mlc *new);
 void	ft_clearmlc(t_mlc *mlc);
 int		ft_mlcsize(t_mlc *mlc);
+
+/* ************************************ */
+/*              ENV TOOLS               */
+/* ************************************ */
+
+void	ft_free_double_array(char **str);
+void	ft_env_delone(t_env *env, void (*del)(void *));
+void	ft_free_env(t_env *env_start);
+t_env	*ft_env_last(t_env *env);
+void	ft_env_add_back(t_env **env_start, t_env *new);
+t_env	*ft_get_env_element(char *env_line);
+t_env	*ft_env_to_list(char **env);
 
 #endif
