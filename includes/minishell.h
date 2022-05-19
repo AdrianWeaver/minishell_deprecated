@@ -6,12 +6,21 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:31 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/19 12:06:59 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/05/19 14:14:07 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINISHELL_H
 # define MINISHELL_H
+
+# define TOKEN_INFILE 0
+# define TOKEN_HEREDOC 1
+# define TOKEN_CMD 2
+# define TOKEN_PIPE 3
+# define TOKEN_QUOTE 4
+# define TOKEN_DQUOTE 5
+# define TOKEN_OUTFILE 6
+# define TOKEN_APPENDOUT 7
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -21,6 +30,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include "minishell_struct.h"
+# include "minishell_parsing.h"
 # include "libft.h"
 # include "libftprintf.h"
 
@@ -48,12 +58,16 @@ void	ft_addmlc_back(t_mlc **mlcl, t_mlc *new);
 void	ft_clearmlc(t_mlc *mlc);
 int		ft_mlcsize(t_mlc *mlc);
 
-t_arg	*ft_get_args(char *input);
-t_arg	*ft_get_quote_arg(char *input, int *i, t_arg *arg);
-int		ft_set_token(t_arg *args);
-int		ft_check_quotes(char input);
-t_arg	*ft_get_arg(char *input, int *i, t_arg *arg);
-void	*ft_custom_calloc(int size);
+/* ************************************ */
+/*              ENV TOOLS               */
+/* ************************************ */
+
+void	ft_free_double_array(char **str);
+void	ft_env_delone(t_env *env, void (*del)(void *));
+void	ft_free_env(t_env *env_start);
+t_env	*ft_env_last(t_env *env);
+void	ft_env_add_back(t_env **env_start, t_env *new);
+t_env	*ft_env_to_list(char **env);
 
 /* ************************************************************************ */
 /*								ENV FUNCTIONS								*/
