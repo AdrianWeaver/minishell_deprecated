@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:00:46 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/19 12:01:08 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:56:17 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ int	ft_count_expand(t_arg *arg, char *flags, t_env *env)
 			exp++;
 		if (arg->content[i] && flags[i] == '2'
 			&& ft_check_var(&arg->content[i], env) > 0)
+		{
 			exp++;
+			i += ft_set_q_jump(&arg->content[i + 1]);
+		}
 	}
 	return (exp);
 }
@@ -69,7 +72,7 @@ int	ft_expand_size(char *str, t_env *env)
 	}
 	if (len < 0)
 		return (0);
-	len = ft_strlen(env->content[0]) - ft_strlen(env->name);
+	len = ft_strlen(env->content) - ft_strlen(env->name);
 	if (env == NULL)
 		return (ft_strlen(str_name));
 	free(str_name);
@@ -95,7 +98,7 @@ char	*ft_get_expanded(char *str, t_env *env)
 	{
 		if (ft_strcmp(temp->name, name) == 0)
 		{
-			var_ret = ft_strdup(temp->content[0]);
+			var_ret = ft_strdup(temp->content);
 			break ;
 		}
 		temp = temp->next;
