@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:31 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/19 14:06:34 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/23 16:57:04 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <sys/types.h>
+# include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <stdio.h>
@@ -67,7 +68,6 @@ void	ft_env_delone(t_env *env, void (*del)(void *));
 void	ft_free_env(t_env *env_start);
 t_env	*ft_env_last(t_env *env);
 void	ft_env_add_back(t_env **env_start, t_env *new);
-t_env	*ft_get_env_element(char *env_line);
 t_env	*ft_env_to_list(char **env);
 
 /* ************************************************************************ */
@@ -77,7 +77,6 @@ t_env	*ft_env_to_list(char **env);
 t_env	*ft_env_last(t_env *env);
 void	ft_env_add_back(t_env **env_start, t_env *new);
 t_env	*ft_get_env_element(t_env *env, char *env_line);
-t_env	*ft_env_to_list(char **env);
 void	ft_delone_env(t_env *env, void (*del)(void *));
 void	ft_cleanly_delone_env(t_env **env_start, t_env *target);
 void	ft_print_env(t_env *env_list);

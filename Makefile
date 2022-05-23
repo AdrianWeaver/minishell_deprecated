@@ -29,6 +29,7 @@ SRCS_EXEC		=	./exec/
 SRCS_ERRORS		=	./errors/
 SRCS_BUILTINS	=	./builtins/
 SRCS_UTILS		=	./utils/
+SRCS_ENV		=	./env/
 
 
 #############################################################################
@@ -52,8 +53,12 @@ SRCS 			=	mitch_main_test.c	\
 					$(addprefix $(SRCS_UTILS),		\
 						ms_args_lst_utils.c	\
 						ms_mlc_lst_utils.c \
+					)\
+					$(addprefix $(SRCS_ENV),		\
 						ms_env_to_list.c \
+						ms_env_utils.c \
 						ms_free_env.c \
+						ms_print_env.c \
 					)\
 
 OBJS			=	$(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
