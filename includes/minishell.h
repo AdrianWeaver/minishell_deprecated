@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:31 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/19 14:14:07 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/23 14:46:55 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	ft_free_env(t_env *env_start);
 t_env	*ft_env_last(t_env *env);
 void	ft_env_add_back(t_env **env_start, t_env *new);
 t_env	*ft_env_to_list(char **env);
+int		ft_env_size(t_env *env);
 
 /* ************************************************************************ */
 /*								ENV FUNCTIONS								*/
@@ -80,6 +81,7 @@ t_env	*ft_env_to_list(char **env);
 void	ft_delone_env(t_env *env, void (*del)(void *));
 void	ft_cleanly_delone_env(t_env **env_start, t_env *target);
 void	ft_print_env(t_env *env_list);
+char	**ft_env_to_char(t_env *env);
 
 /* ************************************************************************ */
 /*								FREE FUNCTIONS								*/
