@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:51:25 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/24 11:27:19 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:30:27 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,12 @@ void	ft_clear_echo_args(t_arg *arg)
 	t_arg	*temp;
 
 	temp = arg->next;
-	if (temp && ft_strcmp(temp->content, "echo") == 0)
+	while (temp && temp->token != TOKEN_PIPE)
 	{
-		while (temp && temp->token != TOKEN_PIPE)
-		{
-			temp = temp->next;
-			// free(arg->next->content);
-			free(arg->next);
-			arg->next = temp;
-		}
+		temp = temp->next;
+		free(arg->next->content);
+		free(arg->next);
+		arg->next = temp;
 	}
 }
 
