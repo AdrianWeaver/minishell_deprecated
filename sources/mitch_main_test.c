@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/24 12:03:03 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:27:41 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,23 @@ int	main(int ac, char *av[], char *env[])
 						break;
 					}
 				}
-				// printf("final content = %s,  token = %d\n", verif->content, verif->token);
+				printf("final content = %s,  token = %d\n", verif->content, verif->token);
 				verif = verif->next;
 			}
 			verif = temp;
 			while (verif)
 			{
 				ft_builtin_parser(verif);
-				ft_clear_echo_args(verif);
 				verif = verif->next;
 			}
 			verif = temp;
 			while (verif)
 			{
-				// printf("final content = %s,  token = %d\n", verif->content, verif->token);
+				printf("final content = %s,  token = %d\n", verif->content, verif->token);
 				verif = verif->next;
 			}
-			if (temp != NULL)
-				ft_cleararg(temp);
+			// if (temp != NULL)
+			// 	ft_cleararg(temp);
 		}
 	}
 	return (0);
