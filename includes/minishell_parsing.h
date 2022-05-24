@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:24:57 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/19 12:02:31 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 08:56:43 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,8 @@ void	ft_final_string(t_arg *arg, char **pieces, char *flags, t_env *env);
 void	ft_get_strings(t_arg *arg, char **pieces, char *flags, t_env *env);
 int		ft_test(t_arg *arg, t_env *env);
 
+void	ft_builtin_parser(t_arg *arg);
+int		ft_redirection(t_arg *arg);
+int		ft_redirection_in(t_arg *arg);
+int		ft_redirection_out(t_arg *arg);
 #endif

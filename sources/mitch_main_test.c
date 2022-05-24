@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/23 16:55:58 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:03:03 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_test(t_arg *arg, t_env *env)
 		return (-1);
 	flags = ft_get_var_pos(arg->content, env);
 	ft_flag_char(arg->content, flags);
-	// printf("flags = %s\n", flags);
+	printf("flags = %s\n", flags);
 	if (dq[0] != 0)
 		ft_set_final_q_index(arg, flags, dq, env);
 	pieces = ft_lock_expand(ft_count_expand(arg, flags, env));
@@ -43,7 +43,7 @@ int	main(int ac, char *av[], char *env[])
 {
 	char	*test;
 	t_arg	*verif;
-	// t_arg	*temp;
+	t_arg	*temp;
 	t_env	*env_list;
 	
 	(void)env;
@@ -60,7 +60,7 @@ int	main(int ac, char *av[], char *env[])
 		}
 		
 		verif = ft_get_args(test);
-		// temp = verif;
+		temp = verif;
 		if (verif != NULL)
 		{
 			ft_set_token(verif);
@@ -81,8 +81,21 @@ int	main(int ac, char *av[], char *env[])
 				// printf("final content = %s,  token = %d\n", verif->content, verif->token);
 				verif = verif->next;
 			}
-			// if (temp != NULL)
-			// 	ft_cleararg(temp);
+			verif = temp;
+			while (verif)
+			{
+				ft_builtin_parser(verif);
+				ft_clear_echo_args(verif);
+				verif = verif->next;
+			}
+			verif = temp;
+			while (verif)
+			{
+				// printf("final content = %s,  token = %d\n", verif->content, verif->token);
+				verif = verif->next;
+			}
+			if (temp != NULL)
+				ft_cleararg(temp);
 		}
 	}
 	return (0);
