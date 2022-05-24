@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 18:09:57 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/19 12:01:46 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 11:28:41 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_remove_quotes(t_arg *arg, int *dq_nbr)
 	i = 0;
 	j = 1;
 	t = -1;
-	temp = malloc(sizeof(char) * (ft_strlen(arg->content)));
+	temp = malloc(sizeof(char) * (ft_strlen(arg->content) + 1));
 	if (!temp)
 		return (-1);
 	while (arg->content[i] != '\0')

@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:00:46 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/23 16:56:17 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:08:09 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,12 @@ int	ft_count_expand(t_arg *arg, char *flags, t_env *env)
 	int		st;
 
 	exp = 0;
-	i = -1;
-	while (arg->content[++i] != '\0')
+	i = 0;
+	// if (!arg)
+	// 	return 0;
+	// if (!arg->content)
+	// 	return 0;
+	while (arg->content[i] != '\0')
 	{
 		st = i;
 		while (arg->content[i] && flags[i] != '2')
@@ -31,9 +35,10 @@ int	ft_count_expand(t_arg *arg, char *flags, t_env *env)
 			&& ft_check_var(&arg->content[i], env) > 0)
 		{
 			exp++;
-			i += ft_set_q_jump(&arg->content[i + 1]);
+			i += ft_set_q_jump(&arg->content[i + 1]) + 1;
 		}
 	}
+
 	return (exp);
 }
 
@@ -41,11 +46,11 @@ char	**ft_lock_expand(int size)
 {
 	char	**pieces;
 
-		pieces = malloc(sizeof(char *) * (size + 1));
+	pieces = malloc(sizeof(char *) * (size + 1));
 	if (!pieces)
 		return (NULL);
-	if (size == 0)
-		pieces[1] = NULL;
+	// if (size == 0)
+	// 	pieces[1] = NULL;
 	else
 		pieces[size] = NULL;
 	return (pieces);
