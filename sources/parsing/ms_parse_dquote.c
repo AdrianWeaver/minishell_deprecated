@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 18:09:57 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/24 11:28:41 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:33:00 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,12 @@ int	*ft_count_quotes(t_arg *arg)
 			delim = arg->content[i];
 			dq++;
 		}
-		if (delim != 'n')
-		{
-			while (arg->content[++i] && arg->content[i] != delim)
-				;
-			if (arg->content[i] && arg->content[i] == delim)
-				dq++;
-		}
+		while (delim != 'n' && arg->content[++i] && arg->content[i] != delim)
+			;
+		if (arg->content[i] && arg->content[i] == delim)
+			dq++;
+		if (arg->content[i] == '\0')
+			break ;
 	}
 	dq_nbr = ft_lock_quote_pos(arg, dq);
 	return (dq_nbr);
@@ -156,5 +155,7 @@ void	ft_fill_q_tab(char *str, int *dq_nbr)
 			if (str[i] && str[i] == delim)
 				dq_nbr[++j] = i;
 		}
+		if (str[i] == '\0')
+			break ;
 	}
 }
