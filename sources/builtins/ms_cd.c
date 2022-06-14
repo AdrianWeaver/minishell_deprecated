@@ -6,36 +6,41 @@
 /*   By: aweaver <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:04:22 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/24 13:49:39 by aweaver          ###   ########.fr       */
+/*   Updated: 2022/05/25 11:32:30 by aweaver          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_cd(t_env *env, char *path)
+int	ft_cd(t_env *env, char *path)
 {
-	char	*cwd;		
-	char	*buff;
-	int		i;
+	char	*pwd;
+	t_env	*env_pwd;
+	t_env	*env_oldpwd;
+	int		success;
 
-	i = 1;
-	while (cwd == NULL)
+	pwd = ft_get_pwd();
+	success = chdir(path);
+	if (success == 0)
 	{
-		buff = malloc(sizeof(*cwd) * i);
-		cwd = getcwd(buff, i);
-		if (cwd == NULL)
+		env_pwd = ft_find_env_elem(env, "PWD");
+		if (env_pwd == NULL)
+			ft_manually_add_one_env(env, "PWD", path);
+		else
 		{
-			i++;
-			free(buff);
+			free(env_pwd->content);
+			env_pwd->content = ft_get_pwd();
 		}
+		env_oldpwd = ft_find_env_elem(env, "OLDPWD");
+		if (env_oldpwd == NULL)
+			ft_manually_add_one_env(env, "OLDPWD", pwd);
+		else
+		{
+			free(env_oldpwd->content);
+			env_pwd->content = pwd;
+		}
+		return (0);
 	}
-	printf("%s\n", cwd);
-	printf("%s\n", buff);
-	free(cwd);
-}
-
-int main(void)
-{
-	ft_cd(NULL, NULL);
-	return (0);
+	fprintf(stderr, "cd: no such file or directory: %s", path);
+	return (1);
 }
