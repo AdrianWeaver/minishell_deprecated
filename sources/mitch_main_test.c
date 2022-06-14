@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:40 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/24 14:27:41 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/14 07:43:32 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ int	main(int ac, char *av[], char *env[])
 					if (ft_test(verif, env_list) == -1)
 					{
 						printf("Missing or extra dquote\n");
-						break;
+						exit(1);
 					}
 				}
-				printf("final content = %s,  token = %d\n", verif->content, verif->token);
+				// printf("final content = %s,  token = %d\n", verif->content, verif->token);
 				verif = verif->next;
 			}
 			verif = temp;

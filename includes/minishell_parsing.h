@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:24:57 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/24 08:56:43 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/14 06:57:24 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_arg	*ft_get_outfile(t_arg *arg);
 t_arg	*ft_get_appendout(t_arg *arg);
 int		ft_set_token(t_arg *args);
 int		ft_check_operator(char c);
+int		ft_check_arg(char c);
 
 /* ************************************************************************** */
 /*                                   QUOTES                                   */
