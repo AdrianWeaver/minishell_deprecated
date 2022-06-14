@@ -6,12 +6,11 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:32:14 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/05/24 08:53:34 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:33:41 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 int	ft_redirection(t_arg *arg)
 {
