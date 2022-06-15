@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 13:24:57 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/06/14 06:57:24 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/15 06:46:38 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ t_arg	*ft_get_infile(t_arg *arg);
 t_arg	*ft_get_heredoc(t_arg *arg);
 t_arg	*ft_get_outfile(t_arg *arg);
 t_arg	*ft_get_appendout(t_arg *arg);
+void	ft_get_redirections(t_arg *arg);
 int		ft_set_token(t_arg *args);
-int		ft_check_operator(char c);
+int		ft_check_op(char c);
 int		ft_check_arg(char c);
 
 /* ************************************************************************** */

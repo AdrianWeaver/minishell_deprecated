@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/08 09:18:31 by aweaver           #+#    #+#             */
-/*   Updated: 2022/05/24 08:55:52 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/15 11:47:18 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 t_arg	*ft_newarg(char *argv);
 t_arg	*ft_lastarg(t_arg *arg);
 void	ft_addarg_back(t_arg **argl, t_arg *new);
-void	ft_cleararg(t_arg *arg);
+void	ft_clear_arg(t_arg *arg);
 int		ft_argsize(t_arg *arg);
 
 /* ************************************ */
@@ -104,7 +104,6 @@ int		ft_export(t_env *env_list, char **to_add);
 int		ft_echo_n_opt(t_arg *arg);
 int		ft_echo_nbr_cmd(t_arg *arg);
 int		ft_echo(t_arg *arg);
-void	ft_clear_echo_args(t_arg *arg);
 
 void	ft_builtin_parser(t_arg *arg);
 
