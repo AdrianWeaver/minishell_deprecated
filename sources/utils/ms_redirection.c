@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/23 10:32:14 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/06/14 18:33:41 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/15 06:38:41 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 int	ft_redirection(t_arg *arg)
 {
-	// static int	stds[3];
 	int			fd;
 
-	// stds[0] = 0;
-	// stds[1] = 1;
-	// stds[2] = 2;
 	if (arg->token == TOKEN_OUTFILE || arg->token == TOKEN_APPENDOUT)
 		fd = ft_redirection_out(arg);
 	else if (arg->token == TOKEN_INFILE || arg->token == TOKEN_HEREDOC)
@@ -30,12 +26,11 @@ int	ft_redirection(t_arg *arg)
 int	ft_redirection_out(t_arg *arg)
 {
 	int	fd;
-	
+
 	if (arg->token == TOKEN_OUTFILE)
 		fd = open(arg->content, O_CREAT | O_TRUNC | O_RDWR, 0644);
 	else if (arg->token == TOKEN_APPENDOUT)
 		fd = open(arg->content, O_CREAT | O_RDWR | O_APPEND, 0644);
-	
 	dup2(fd, STDOUT_FILENO);
 	return (fd);
 }
@@ -46,7 +41,6 @@ int	ft_redirection_in(t_arg *arg)
 
 	if (arg->token == TOKEN_INFILE)
 		fd = open(arg->content, O_RDONLY);
-	
 	dup2(fd, STDIN_FILENO);
 	return (fd);
 }

@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 18:10:13 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/06/14 18:46:37 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/15 06:37:01 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_arg	*ft_get_quote_arg(char *input, int *i, t_arg *arg, char delim)
 	{
 		while (input[j] && input[j] != delim)
 			j++;
-		while (input[++j] && input[j] != ' ' && ft_check_operator(input[j]) == 0)
+		while (input[++j] && input[j] != ' ' && ft_check_op(input[j]) == 0)
 			;
 	}
 	sub = ft_substr(input, 0, j);
@@ -129,7 +129,6 @@ t_arg	*ft_get_arg(char *input, int *i, t_arg *arg)
 	while (ft_check_arg(input[j]) == 0)
 		j++;
 	sub = ft_substr(input, 0, j);
-	printf("sub dans get_arg == %s\n", sub);
 	if (sub == NULL)
 		return (NULL);
 	new = ft_newarg(sub);

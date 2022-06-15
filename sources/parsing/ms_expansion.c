@@ -6,7 +6,7 @@
 /*   By: jcervoni <jcervoni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:00:46 by jcervoni          #+#    #+#             */
-/*   Updated: 2022/06/14 18:32:34 by jcervoni         ###   ########.fr       */
+/*   Updated: 2022/06/15 06:39:16 by jcervoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	ft_count_expand(t_arg *arg, char *flags, t_env *env)
 
 	exp = 0;
 	i = 0;
-	// if (!arg)
-	// 	return 0;
-	// if (!arg->content)
-	// 	return 0;
+	if (!arg)
+		return (0);
 	while (arg->content[i] != '\0')
 	{
 		st = i;
@@ -46,7 +44,7 @@ int	ft_count_expand(t_arg *arg, char *flags, t_env *env)
 char	**ft_lock_expand(int size)
 {
 	char	**pieces;
-	
+
 	pieces = malloc(sizeof(char *) * (size + 1));
 	if (!pieces)
 		return (NULL);
